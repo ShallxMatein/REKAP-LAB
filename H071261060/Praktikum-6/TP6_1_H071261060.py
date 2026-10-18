@@ -27,6 +27,7 @@ def cari_buku(inventaris, kata_kunci):
 def update_stok(inventaris, judul, jumlah):
     simbol = jumlah[0]
     angka = jumlah[1:]
+    ditemukan = False
     for buku in inventaris:
         if buku["judul"] == judul:
             if simbol == "-":
@@ -34,15 +35,16 @@ def update_stok(inventaris, judul, jumlah):
                 if buku["stok"] < 0:
                     print("Tidak dapat membuat perubahan")
                     buku["stok"] += int(angka)
+                    ditemukan = True
                 else:
-                    print(f"Stok '{"stok"}' berkurang {angka}. Stok sekarang: {buku["stok"]}")
+                    print(f"Stok '{buku["judul"]}' berkurang {angka}. Stok sekarang: {buku["stok"]}")
+                    ditemukan = True
             elif simbol == "+":
                 buku["stok"] += int(angka)
-                if buku["stok"] < 0:
-                    print("Tidak dapat membuat perubahan")
-                print(f"Stok '{"stok"}' bertambah {angka}. Stok sekarang: {buku["stok"]}")
-        elif judul not in buku["judul"]:
-            print("Buku yang anda masukkan tidak ada")
+                print(f"Stok '{buku["judul"]}' bertambah {angka}. Stok sekarang: {buku["stok"]}")
+                ditemukan = True
+    if not ditemukan:
+        print(f"Tidak ada buku '{judul}' dalam inventaris")
 
 def ringkasan_inventaris(inventaris):
     total_buku = len(inventaris)
@@ -71,7 +73,7 @@ print("=======================================")
 print("  SISTEM IVENTARIS TOKO BUKU BOOKNEST")
 print("=======================================")
 while True:
-    # try:
+    try:
         print()
         print("Menu:")
         print("1. Tambah Buku")
@@ -103,6 +105,6 @@ while True:
             break
         else:
             print("Input yang anda masukkan tidak valid")
-    # except:
-    #     print("Input yang anda masukkan tidak valid")
-    #     continue
+    except:
+        print("Input yang anda masukkan tidak valid")
+        continue

@@ -15,15 +15,13 @@ def tambah_lagu(playlist, genre_set, judul, artis, genre, durasi):
     print()
 
 def  tampilkan_playlist(playlist):
-    total_durasi_menit = 0
-    total_durasi_detik = 0
+    total_durasi = 0
     lagu_terpanjang = 0
     artis_terpanjang = 0
     genre_terpanjang = 0
     durasi_terpanjang = 0
     for lagu in playlist:
-        total_durasi_menit += lagu["durasi"]
-        total_durasi_detik += lagu["durasi"]
+        total_durasi += lagu["durasi"]
         lagu_panjang = lagu["judul"]
         artis = lagu["artis"]
         genre = lagu["genre"]
@@ -47,7 +45,7 @@ def  tampilkan_playlist(playlist):
         print(f" {baris_ke}   {i["judul"].ljust(lagu_terpanjang)}  {i["artis"].ljust(artis_terpanjang)}  {i["genre"].ljust(genre_terpanjang)}   {menit}:{detik}")
         baris_ke += 1
     print(f"====={lagu_terpanjang * "=" }=={artis_terpanjang * "=" }=={genre_terpanjang * "=" }==={durasi_terpanjang * "=" }===")
-    print(f"Total durasi playlist: {total_durasi_menit // 60} menit {total_durasi_detik % 60} detik")
+    print(f"Total durasi playlist: {total_durasi // 60} menit {total_durasi % 60} detik")
     print()
 
 def filter_genre(playlist, genre_target):
