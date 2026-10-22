@@ -114,4 +114,4 @@ while True:
         print("Terimas kasih!")
         break
     else:
-        print("Opsi yang anda pilih tidak valid!")
+        print("Opsi yang anda pilih tidak valid!!")
