@@ -44,9 +44,20 @@ def membuat_invoices(kasir, data_produk):
         o.write("\n" + "TERIMAKASIH TELAH BELANJA".center(100))
         o.write("\n" + "=" * 100)
 
-    with open(file_history, "a") as isi:
-        isi.write("\n| " + f"{id_tanngal}/{id_bulan}/{id_tahun} {id_jam_menit[:2]}:{id_jam_menit[2:]}".ljust(28) + "| " + f"{id_nama}{id_tahun}{id_bulan}{id_tanngal}{id_jam_menit}{angka_random}".ljust(29) + "|" + f"Rp{total_keseluruhan}".rjust(26) + " |")
-        isi.write("\n" + ("=" * 90))
+    if os.path.isfile(file_history):
+        with open(file_history, "a") as isi:
+            isi.write("\n| " + f"{id_tanngal}/{id_bulan}/{id_tahun} {id_jam_menit[:2]}:{id_jam_menit[2:]}".ljust(28) + "| " + f"{id_nama}{id_tahun}{id_bulan}{id_tanngal}{id_jam_menit}{angka_random}".ljust(29) + "|" + f"Rp{total_keseluruhan}".rjust(26) + " |")
+            isi.write("\n" + ("=" * 90))
+    else:
+        with open(file_history, "a") as isi:
+            isi.write("\n" + ("=" * 90))
+            isi.write("\n" + "|" + "RIWAYAT TRANSAKSI".center(88) + "|")
+            isi.write("\n" + ("=" * 90))
+            isi.write("\n| " + "Waktu".center(28) + "|" + "ID Transaksi".center(29) + " |" + "Nominal Transaksi".center(27) + "|")
+            isi.write("\n" + ("=" * 90))
+            isi.write("\n| " + f"{id_tanngal}/{id_bulan}/{id_tahun} {id_jam_menit[:2]}:{id_jam_menit[2:]}".ljust(28) + "| " + f"{id_nama}{id_tahun}{id_bulan}{id_tanngal}{id_jam_menit}{angka_random}".ljust(29) + "|" + f"Rp{total_keseluruhan}".rjust(26) + " |")
+            isi.write("\n" + ("=" * 90))
+
     print("=" * 54)
     print("TRANSAKSI BERHASIL".center(54))
 
@@ -114,4 +125,4 @@ while True:
         print("Terimas kasih!")
         break
     else:
-        print("Opsi yang anda pilih tidak valid!!")
+        print("Opsi yang anda pilih tidak valid!")
