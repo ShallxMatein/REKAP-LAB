@@ -81,6 +81,8 @@ while True:
         if maka_ditemukan == False:
             print("Pemain tidak ditemukan!")
     elif pilihan == 3: #Conditional untuk pilihan ke 3, disini terdapat looping untuk menambahkan variable-variable yang sesuai
+        if not data_pemain:
+            print("\nBelum ada pemain terisi")
         total_pemain = 0
         pemain_unggul = 0
         pemain_evaluasi = 0
@@ -102,10 +104,13 @@ while True:
         print("Input yang anda masukkan tida valid!")
         continue
 
-print("\n--- REKAPITULASI PERFORMA PEMAIN ---")
-print("=" * 78)
-print("| " + "No".ljust(3) + "|" + " Nama".ljust(12) + " | " + "ID Pemain".ljust(10) + " | " + "Role".ljust(10) + " | " + "Skor Akhir".ljust(10) + " | " + "Status".ljust(16) + " |")
-print("=" * 78)
-for i, isi in enumerate(data_pemain, start=1):
-    print(f"| {i}  |" + isi.tampilkan_data())
-print("=" * 78)
+if data_pemain:
+    print("\n--- REKAPITULASI PERFORMA PEMAIN ---")
+    print("=" * 78)
+    print("| " + "No".ljust(3) + "|" + " Nama".ljust(12) + " | " + "ID Pemain".ljust(10) + " | " + "Role".ljust(10) + " | " + "Skor Akhir".ljust(10) + " | " + "Status".ljust(16) + " |")
+    print("=" * 78)
+    for i, isi in enumerate(data_pemain, start=1):
+        print(f"| {i}  |" + isi.tampilkan_data())
+    print("=" * 78)
+else:
+    print("\nBelum ada pemain terisi")
