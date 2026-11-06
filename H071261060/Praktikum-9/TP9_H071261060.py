@@ -18,9 +18,7 @@ class Pemain:
             return "Perlu Evaluasi"
 
     def tampilkan_data(self):
-        skor = self.hitung_skor_akhir()
-        status = self.status_peforma()
-        return f" {self.nama}".ljust(12) + " | " + self.id_pemain.ljust(10) + " | " + self.role.ljust(10) + " | " + f"{skor}".ljust(10) + " | " + status.ljust(16) + " |"
+        return f" {self.nama}".ljust(12) + " | " + self.id_pemain.ljust(10) + " | " + self.role.ljust(10) + " | " + f"{self.hitung_skor_akhir()}".ljust(10) + " | " + f"{self.status_peforma()}".ljust(16) + " |"
 
 data_pemain = []
 
